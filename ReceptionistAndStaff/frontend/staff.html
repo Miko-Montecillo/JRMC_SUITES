@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Staff Management Dashboard</h1>
+
+    <!-- Navigation for Tabs -->
+    <nav>
+        <a href="index.html" class="tab-link">Common Tasks</a>
+        <a href="staff.html" class="tab-link active">Staff Tab</a>
+        <a href="categorizedStaff.html" class="tab-link">Categorized Staff Requests</a>
+        <a href="notif.html" class="tab-link">Notifications</a>
+    </nav>
+
+    <!-- Staff Tab Section -->
+    <div class="section active widget-grid" id="staff-section">
+        <!-- New Request Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Submit New Request</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active">
+                <label for="request-type">Request Type:</label>
+                <select id="request-type" onchange="toggleCustomRequestInput()">
+                    <option value="maintenance">Maintenance</option>
+                    <option value="housekeeping">Housekeeping</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="custom">Custom Request</option>
+                </select>
+
+                <div id="custom-request-input" style="display: none;">
+                    <label for="custom-request-type">Custom Request Type:</label>
+                    <input type="text" id="custom-request-type" placeholder="Enter custom request type">
+                </div>
+
+                <label for="request-description">Description:</label>
+                <textarea id="request-description" rows="4" placeholder="Enter request details"></textarea>
+
+                <label for="request-room">Room Number:</label>
+                <select id="request-room">
+                    <optgroup label="------------Student Dorm------------">
+                        <option>A101</option>
+                        <option>A102</option>
+                        <option>A103</option>
+                        <option>A104</option>
+                        <option>A105</option>
+                        <option>A106</option>
+                        <option>A107</option>
+                        <option>A108</option>
+                        <option>A109</option>
+                        <option>A110</option>
+                        <option>A201</option>
+                        <option>A202</option>
+                        <option>A203</option>
+                        <option>A204</option>
+                        <option>A205</option>
+                    </optgroup>
+                    <optgroup label="------------Single Room------------">
+                        <option>B206</option>
+                        <option>B207</option>
+                        <option>B208</option>
+                        <option>B209</option>
+                        <option>B210</option>
+                        <option>B301</option>
+                        <option>B302</option>
+                        <option>B303</option>
+                        <option>B304</option>
+                        <option>B305</option>
+                        <option>B306</option>
+                        <option>B307</option>
+                    </optgroup>
+                    <optgroup label="------------Double Room------------">
+                        <option>C308</option>
+                        <option>C309</option>
+                        <option>C310</option>
+                        <option>C401</option>
+                        <option>C402</option>
+                        <option>C403</option>
+                        <option>C404</option>
+                        <option>C405</option>
+                        <option>C406</option>
+                        <option>C407</option>
+                        <option>C408</option>
+                        <option>C409</option>
+                    </optgroup>
+                    <optgroup label="------------Family Room------------">
+                        <option>D410</option>
+                        <option>D501</option>
+                        <option>D502</option>
+                        <option>D503</option>
+                        <option>D504</option>
+                        <option>D505</option>
+                        <option>D506</option>
+                        <option>D507</option>
+                        <option>D508</option>
+                    </optgroup>
+                    <optgroup label="------------Event Halls------------">
+                        <option>E601</option>
+                        <option>E701</option>
+                    </optgroup>
+                </select>
+
+                <label for="request-priority">Priority Level:</label>
+                <select id="request-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="urgent">Urgent</option>
+                </select>
+
+                <button class="btn" onclick="submitStaffRequest()">Submit Request</button>
+            </div>
+        </div>
+
+        <!-- Active Requests Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Active Requests</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active">
+                <div id="active-requests">
+                    <!-- Active requests will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Completed Requests Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Completed Requests</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content">
+                <div id="completed-requests">
+                    <!-- Completed requests will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="rsscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* Notification Item Styles */
+.notification-item {
+    background: linear-gradient(to right, rgba(50, 50, 50, 0.95), rgba(40, 40, 40, 0.95));
+    border-left: 4px solid #ffa31a;
+    border-radius: 8px;
+    margin: 12px 0;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.notification-item.unread {
+    border-left-color: #ffa31a;
+    background: linear-gradient(to right, rgba(60, 60, 60, 0.95), rgba(50, 50, 50, 0.95));
+}
+
+/* Notification Header */
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.notification-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffa31a;
+}
+
+.notification-type {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-right: 8px;
+}
+
+.notification-type.booking {
+    background-color: rgba(255, 163, 26, 0.2);
+    color: #ffa31a;
+}
+
+.notification-type.reservation {
+    background-color: rgba(0, 200, 81, 0.2);
+    color: #00C851;
+}
+
+/* Notification Content */
+.notification-message {
+    color: #fff;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+/* Notification Footer */
+.notification-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-timestamp {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Action Buttons */
+.mark-read-btn {
+    background-color: transparent;
+    border: 1px solid #ffa31a;
+    color: #ffa31a;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mark-read-btn:hover {
+    background-color: #ffa31a;
+    color: #1b1b1b;
+}
+
+/* Empty State */
+.no-notifications {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+/* Widget Actions */
+.widget-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Notification Count Badge */
+.notification-count {
+    background-color: rgba(255, 163, 26, 0.2);
+    color: #ffa31a;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.notification-count.unread {
+    background-color: rgba(255, 68, 68, 0.2);
+    color: #ff4444;
+}

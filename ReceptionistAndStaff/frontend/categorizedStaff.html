@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorized Staff Requests</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Categorized Staff Requests</h1>
+
+    <!-- Navigation for Tabs -->
+    <nav>
+        <a href="index.html" class="tab-link">Common Tasks</a>
+        <a href="staff.html" class="tab-link">Staff Tab</a>
+        <a href="categorizedStaff.html" class="tab-link active">Categorized Staff Requests</a>
+        <a href="notif.html" class="tab-link">Notifications</a>
+    </nav>
+
+    <!-- Categorized Staff Section -->
+    <div class="section active widget-grid" id="categorized-staff-section">
+        <!-- Maintenance Requests Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Maintenance Requests</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active" id="maintenance-requests">
+                <!-- Maintenance requests will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Housekeeping Requests Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Housekeeping Requests</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active" id="housekeeping-requests">
+                <!-- Housekeeping requests will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Technical Support Requests Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Technical Support Requests</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active" id="technical-requests">
+                <!-- Technical support requests will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Other Requests Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Other Requests</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active" id="other-requests">
+                <!-- Other requests will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="rsscript.js"></script>
+</body>
+</html>
