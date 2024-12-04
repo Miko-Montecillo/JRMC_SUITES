@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JRMC Suites - Reservation</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/confirmReservation.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <section class="header">
+      <div class="flex">
+        <a href="#home" class="logo">JRMC Suites</a>
+      </div>
+    </section>
+
+    <!-- Reservation Form Section -->
+    <section class="reservation">
+      <h2>Reservation Details</h2>
+      <div class="reservation-summary">
+        <h3>Reservation Summary</h3>
+        <p id="roomType">Room Type:</p>
+        <p id="roomId">Room ID:</p>
+        <p id="checkInDate">Check-in Date:</p>
+        <p id="checkOutDate">Check-out Date:</p>
+      </div>
+
+      <!-- Reservation Form -->
+      <form id="reservationForm">
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" placeholder="Enter your email address" required />
+        </div>
+        <div class="form-group">
+          <label for="contactNo">Contact #:</label>
+          <input type="text" id="contactNo" placeholder="Enter your contact number" required />
+        </div>
+        <button type="submit" class="btn">Confirm Reservation</button>
+      </form>
+
+      <!-- Confirmation Message -->
+      <div id="confirmationMessage" style="display: none">
+        <h3>Reservation Confirmed!</h3>
+        <p>Thank you for your reservation. Your booking has been confirmed.</p>
+        <p id="reservationIdMessage"></p>
+        <!-- Display reservation expiry -->
+        <p id="expiryDateMessage"></p>
+        <a href="index.html">
+          <button id="backToHome" class="btn">Back to Home</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+      <div class="box-container">
+        <div class="box">
+          <a href="tel:1234567890"
+            ><i class="fas fa-phone"></i> +123-456-7890</a
+          >
+          <a href="tel:1112223333"
+            ><i class="fas fa-phone"></i> +111-222-3333</a
+          >
+          <a href="mailto:jrmc@gmail.com"
+            ><i class="fas fa-envelope"></i> jrmcsuites@gmail.com</a
+          >
+          <a href="#"
+            ><i class="fas fa-map-marker-alt"></i> Philippines - Mindanao</a
+          >
+        </div>
+
+
+        <div class="box">
+          <a href="#">facebook <i class="fab fa-facebook-f"></i></a>
+          <a href="#">twitter <i class="fab fa-twitter"></i></a>
+          <a href="#">instagram <i class="fab fa-instagram"></i></a>
+          <a href="#">linkedin <i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="credit">
+        &copy; Produced by JRMC!
+      </div>
+    </section>
+
+    <!-- External JS File -->
+    <script src="js/gsscript.js"></script>
+  </body>
+</html>

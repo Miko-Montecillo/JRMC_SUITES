@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JRMC Suites - Check Availability</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- header section starts  -->
+    <section class="header">
+      <div class="flex">
+        <a href="#home" class="logo">JRMC Suites</a>
+        <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+
+      <nav class="navbar">
+        <a href="index.html">home</a>
+      </nav>
+    </section>
+
+    <section class="availability" id="availability">
+      <form id="availabilityForm">
+        <h3>Check Availability</h3>
+        <div class="flex">
+          <div class="box">
+            <p>Check in <span>*</span></p>
+            <input type="date" name="check_in_availability" class="input" id="check_in_availability" required />
+          </div>
+          <div class="box">
+            <p>Check out <span>*</span></p>
+            <input type="date" name="check_out_availability" class="input" id="check_out_availability" required />
+          </div>
+          <div class="box">
+            <p>Room Type <span>*</span></p>
+            <select name="rooms" class="input" id="roomSelect" required>
+              <option value="">Select a Room Type</option>
+              <option value="A">Student Dorm</option>
+              <option value="B">Single Bedroom</option>
+              <option value="C">Double Bedroom</option>
+              <option value="D">Family Room</option>
+              <option value="E">Event Halls</option>
+            </select>
+            <p id="studentDormMessage" style="display: none; color: #e67e22; margin-top: 5px; font-size: 0.9em;">
+              <i class="fas fa-info-circle"></i> Student Dorm requires minimum 1-month booking
+            </p>
+          </div>
+        </div>
+        <input
+          type="button"
+          value="Check Availability"
+          class="btn"
+          onclick="checkAvailability()"
+        />
+      </form>
+    </section>
+
+    <!-- footer section starts -->
+    <section class="footer">
+      <div class="box-container">
+        <div class="box">
+          <a href="tel:1234567890"
+            ><i class="fas fa-phone"></i> +123-456-7890</a
+          >
+          <a href="tel:1112223333"
+            ><i class="fas fa-phone"></i> +111-222-3333</a
+          >
+          <a href="mailto:jrmc@gmail.com"
+            ><i class="fas fa-envelope"></i> jrmcsuites@gmail.com</a
+          >
+          <a href="#"
+            ><i class="fas fa-map-marker-alt"></i> Philippines - Mindanao</a
+          >
+        </div>
+
+        <div class="box">
+          <a href="#">facebook <i class="fab fa-facebook-f"></i></a>
+          <a href="#">twitter <i class="fab fa-twitter"></i></a>
+          <a href="#">instagram <i class="fab fa-instagram"></i></a>
+          <a href="#">linkedin <i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="credit">&copy; Produced by JRMC!</div>
+    </section>
+
+    <!-- footer section ends -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="js/gsscript.js"></script>
+  </body>
+</html>
