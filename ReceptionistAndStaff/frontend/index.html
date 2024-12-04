@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Receptionist Dashboard</h1>
+
+    <!-- Navigation for Tabs -->
+    <nav>
+        <a href="index.html" class="tab-link active">Common Tasks</a>
+        <a href="staff.html" class="tab-link">Staff Tab</a>
+        <a href="categorizedStaff.html" class="tab-link">Categorized Staff Requests</a>
+        <a href="notif.html" class="tab-link">Notifications</a>
+    </nav>
+
+    <!-- Common Tasks Section -->
+    <div class="section active widget-grid" id="common-section">
+        <!-- Check-In Section -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Guest Check-In</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content active">
+                <label for="checkin-name">Guest Name:</label>
+                <input type="text" id="checkin-name" placeholder="Enter guest name">
+                <label for="checkin-room">Room Number:</label>
+                <select id="checkin-room">
+                    <optgroup label="------------Student Dorm------------">
+                        <option>A101</option>
+                        <option>A102</option>
+                        <option>A103</option>
+                        <option>A104</option>
+                        <option>A105</option>
+                        <option>A106</option>
+                        <option>A107</option>
+                        <option>A108</option>
+                        <option>A109</option>
+                        <option>A110</option>
+                        <option>A201</option>
+                        <option>A202</option>
+                        <option>A203</option>
+                        <option>A204</option>
+                        <option>A205</option>
+                    </optgroup>
+                    <optgroup label="------------Single Room------------">
+                        <option>B206</option>
+                        <option>B207</option>
+                        <option>B208</option>
+                        <option>B209</option>
+                        <option>B210</option>
+                        <option>B301</option>
+                        <option>B302</option>
+                        <option>B303</option>
+                        <option>B304</option>
+                        <option>B305</option>
+                        <option>B306</option>
+                        <option>B307</option>
+                    </optgroup>
+                    <optgroup label="------------Double Room------------">
+                        <option>C308</option>
+                        <option>C309</option>
+                        <option>C310</option>
+                        <option>C401</option>
+                        <option>C402</option>
+                        <option>C403</option>
+                        <option>C404</option>
+                        <option>C405</option>
+                        <option>C406</option>
+                        <option>C407</option>
+                        <option>C408</option>
+                        <option>C409</option>
+                    </optgroup>
+                    <optgroup label="------------Family Room------------">
+                        <option>D410</option>
+                        <option>D501</option>
+                        <option>D502</option>
+                        <option>D503</option>
+                        <option>D504</option>
+                        <option>D505</option>
+                        <option>D506</option>
+                        <option>D507</option>
+                        <option>D508</option>
+                    </optgroup>
+                    <optgroup label="------------Event Halls------------">
+                        <option>E601</option>
+                        <option>E701</option>
+                    </optgroup>
+                </select>
+                <button class="btn" onclick="checkIn()">Check In</button>
+            </div>
+        </div>
+
+        <!-- Check-Out Section -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Guest Check-Out</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content">
+                <label for="checkout-room">Room Number:</label>
+                <select id="checkout-room">
+                    <optgroup label="------------Student Dorm------------">
+                        <option>A101</option>
+                        <option>A102</option>
+                        <option>A103</option>
+                        <option>A104</option>
+                        <option>A105</option>
+                        <option>A106</option>
+                        <option>A107</option>
+                        <option>A108</option>
+                        <option>A109</option>
+                        <option>A110</option>
+                        <option>A201</option>
+                        <option>A202</option>
+                        <option>A203</option>
+                        <option>A204</option>
+                        <option>A205</option>
+                    </optgroup>
+                    <optgroup label="------------Single Room------------">
+                        <option>B206</option>
+                        <option>B207</option>
+                        <option>B208</option>
+                        <option>B209</option>
+                        <option>B210</option>
+                        <option>B301</option>
+                        <option>B302</option>
+                        <option>B303</option>
+                        <option>B304</option>
+                        <option>B305</option>
+                        <option>B306</option>
+                        <option>B307</option>
+                    </optgroup>
+                    <optgroup label="------------Double Room------------">
+                        <option>C308</option>
+                        <option>C309</option>
+                        <option>C310</option>
+                        <option>C401</option>
+                        <option>C402</option>
+                        <option>C403</option>
+                        <option>C404</option>
+                        <option>C405</option>
+                        <option>C406</option>
+                        <option>C407</option>
+                        <option>C408</option>
+                        <option>C409</option>
+                    </optgroup>
+                    <optgroup label="------------Family Room------------">
+                        <option>D410</option>
+                        <option>D501</option>
+                        <option>D502</option>
+                        <option>D503</option>
+                        <option>D504</option>
+                        <option>D505</option>
+                        <option>D506</option>
+                        <option>D507</option>
+                        <option>D508</option>
+                    </optgroup>
+                    <optgroup label="------------Event Halls------------">
+                        <option>E601</option>
+                        <option>E701</option>
+                    </optgroup>
+                </select>
+                <button class="btn" onclick="checkOut()">Check Out</button>
+            </div>
+        </div>
+
+        <!-- Generate Invoice Section -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Generate Invoice</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content">
+                <label for="invoice-room">Room Number:</label>
+                <select id="invoice-room">
+                    <optgroup label="------------Student Dorm------------">
+                        <option>A101</option>
+                        <option>A102</option>
+                        <option>A103</option>
+                        <option>A104</option>
+                        <option>A105</option>
+                        <option>A106</option>
+                        <option>A107</option>
+                        <option>A108</option>
+                        <option>A109</option>
+                        <option>A110</option>
+                        <option>A201</option>
+                        <option>A202</option>
+                        <option>A203</option>
+                        <option>A204</option>
+                        <option>A205</option>
+                    </optgroup>
+                    <optgroup label="------------Single Room------------">
+                        <option>B206</option>
+                        <option>B207</option>
+                        <option>B208</option>
+                        <option>B209</option>
+                        <option>B210</option>
+                        <option>B301</option>
+                        <option>B302</option>
+                        <option>B303</option>
+                        <option>B304</option>
+                        <option>B305</option>
+                        <option>B306</option>
+                        <option>B307</option>
+                    </optgroup>
+                    <optgroup label="------------Double Room------------">
+                        <option>C308</option>
+                        <option>C309</option>
+                        <option>C310</option>
+                        <option>C401</option>
+                        <option>C402</option>
+                        <option>C403</option>
+                        <option>C404</option>
+                        <option>C405</option>
+                        <option>C406</option>
+                        <option>C407</option>
+                        <option>C408</option>
+                        <option>C409</option>
+                    </optgroup>
+                    <optgroup label="------------Family Room------------">
+                        <option>D410</option>
+                        <option>D501</option>
+                        <option>D502</option>
+                        <option>D503</option>
+                        <option>D504</option>
+                        <option>D505</option>
+                        <option>D506</option>
+                        <option>D507</option>
+                        <option>D508</option>
+                    </optgroup>
+                    <optgroup label="------------Event Halls------------">
+                        <option>E601</option>
+                        <option>E701</option>
+                    </optgroup>
+                </select>
+                <button class="btn" onclick="generateInvoice()">Generate Invoice</button>
+            </div>
+        </div>
+
+        <!-- Modify Room Details Section -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Modify Room Details</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content">
+                <label for="modify-room">Room Number:</label>
+                <select id="modify-room">
+                    <optgroup label="------------Student Dorm------------">
+                        <option>A101</option>
+                        <option>A102</option>
+                        <option>A103</option>
+                        <option>A104</option>
+                        <option>A105</option>
+                        <option>A106</option>
+                        <option>A107</option>
+                        <option>A108</option>
+                        <option>A109</option>
+                        <option>A110</option>
+                        <option>A201</option>
+                        <option>A202</option>
+                        <option>A203</option>
+                        <option>A204</option>
+                        <option>A205</option>
+                    </optgroup>
+                    <optgroup label="------------Single Room------------">
+                        <option>B206</option>
+                        <option>B207</option>
+                        <option>B208</option>
+                        <option>B209</option>
+                        <option>B210</option>
+                        <option>B301</option>
+                        <option>B302</option>
+                        <option>B303</option>
+                        <option>B304</option>
+                        <option>B305</option>
+                        <option>B306</option>
+                        <option>B307</option>
+                    </optgroup>
+                    <optgroup label="------------Double Room------------">
+                        <option>C308</option>
+                        <option>C309</option>
+                        <option>C310</option>
+                        <option>C401</option>
+                        <option>C402</option>
+                        <option>C403</option>
+                        <option>C404</option>
+                        <option>C405</option>
+                        <option>C406</option>
+                        <option>C407</option>
+                        <option>C408</option>
+                        <option>C409</option>
+                    </optgroup>
+                    <optgroup label="------------Family Room------------">
+                        <option>D410</option>
+                        <option>D501</option>
+                        <option>D502</option>
+                        <option>D503</option>
+                        <option>D504</option>
+                        <option>D505</option>
+                        <option>D506</option>
+                        <option>D507</option>
+                        <option>D508</option>
+                    </optgroup>
+                    <optgroup label="------------Event Halls------------">
+                        <option>E601</option>
+                        <option>E701</option>
+                    </optgroup>
+                </select>
+                <label for="modify-details">New Details:</label>
+                <textarea id="modify-details" rows="3"></textarea>
+                <div class="button-group">
+                    <button class="btn" onclick="modifyRoom()">Update Details</button>
+                    <button class="btn btn-danger" onclick="clearRoomDetails()">Clear Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modify Room Availability Section -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Modify Room Availability</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="widget-content">
+                <label for="availability-room">Room Number:</label>
+                <select id="availability-room">
+                    <optgroup label="------------Student Dorm------------">
+                        <option>A101</option>
+                        <option>A102</option>
+                        <option>A103</option>
+                        <option>A104</option>
+                        <option>A105</option>
+                        <option>A106</option>
+                        <option>A107</option>
+                        <option>A108</option>
+                        <option>A109</option>
+                        <option>A110</option>
+                        <option>A201</option>
+                        <option>A202</option>
+                        <option>A203</option>
+                        <option>A204</option>
+                        <option>A205</option>
+                    </optgroup>
+                    <optgroup label="------------Single Room------------">
+                        <option>B206</option>
+                        <option>B207</option>
+                        <option>B208</option>
+                        <option>B209</option>
+                        <option>B210</option>
+                        <option>B301</option>
+                        <option>B302</option>
+                        <option>B303</option>
+                        <option>B304</option>
+                        <option>B305</option>
+                        <option>B306</option>
+                        <option>B307</option>
+                    </optgroup>
+                    <optgroup label="------------Double Room------------">
+                        <option>C308</option>
+                        <option>C309</option>
+                        <option>C310</option>
+                        <option>C401</option>
+                        <option>C402</option>
+                        <option>C403</option>
+                        <option>C404</option>
+                        <option>C405</option>
+                        <option>C406</option>
+                        <option>C407</option>
+                        <option>C408</option>
+                        <option>C409</option>
+                    </optgroup>
+                    <optgroup label="------------Family Room------------">
+                        <option>D410</option>
+                        <option>D501</option>
+                        <option>D502</option>
+                        <option>D503</option>
+                        <option>D504</option>
+                        <option>D505</option>
+                        <option>D506</option>
+                        <option>D507</option>
+                        <option>D508</option>
+                    </optgroup>
+                    <optgroup label="------------Event Halls------------">
+                        <option>E601</option>
+                        <option>E701</option>
+                    </optgroup>
+                </select>
+                <label for="availability-status">Availability:</label>
+                <select id="availability-status">
+                    <option value="Available">Available</option>
+                    <option value="Occupied">Occupied</option>
+                    <option value="Maintenance">Maintenance</option>
+                </select>
+                <button class="btn" onclick="modifyAvailability()">Update Availability</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="rsscript.js"></script>
+</body>
+</html>

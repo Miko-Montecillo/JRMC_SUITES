@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Receptionist Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="notifications.css">
+</head>
+<body>
+    <h1>Notifications Dashboard</h1>
+
+    <!-- Navigation for Tabs -->
+    <nav>
+        <a href="index.html" class="tab-link">Common Tasks</a>
+        <a href="staff.html" class="tab-link">Staff Tab</a>
+        <a href="categorizedStaff.html" class="tab-link">Categorized Staff Requests</a>
+        <a href="notif.html" class="tab-link active">Notifications</a>
+    </nav>
+
+    <div class="section active widget-grid" id="notifications-section">
+        <!-- Booking Notifications Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Booking Notifications</h2>
+                <div class="widget-actions">
+                    <span class="notification-count unread" id="booking-unread-count">0</span>
+                    <button class="btn" onclick="markAllAsRead('booking')">Mark All as Read</button>
+                    <span class="collapse-icon">▼</span>
+                </div>
+            </div>
+            <div class="widget-content">
+                <div id="booking-notifications">
+                    <!-- Booking notifications will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Reservation Notifications Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <h2>Reservation Notifications</h2>
+                <div class="widget-actions">
+                    <span class="notification-count unread" id="reservation-unread-count">0</span>
+                    <button class="btn" onclick="markAllAsRead('reservation')">Mark All as Read</button>
+                    <span class="collapse-icon">▼</span>
+                </div>
+            </div>
+            <div class="widget-content">
+                <div id="reservation-notifications">
+                    <!-- Reservation notifications will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="rsscript.js"></script>
+    <script src="notifications.js"></script>
+</body>
+</html>
