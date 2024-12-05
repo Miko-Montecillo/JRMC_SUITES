@@ -43,7 +43,7 @@ function calculateDuration(checkIn, checkOut, roomType) {
     }
     // For Student Dorm, convert to months
     else if (roomType.includes('Student Dorm')) {
-        finalDuration = Math.ceil(daysDiff / 30); // Convert to months
+        finalDuration = Math.floor(daysDiff / 30); // Convert to months, using floor instead of ceil
         console.log('Student Dorm duration:', { daysDiff, months: finalDuration });
     }
     // For rooms charged per night, we count the nights stayed

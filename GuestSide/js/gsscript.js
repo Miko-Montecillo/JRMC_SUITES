@@ -48,8 +48,8 @@ function checkAvailability() {
         const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
         const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
         
-        if (daysDiff < 30) { // Less than 1 month (assuming 30 days)
-            alert('Student Dorm requires a minimum stay of 1 month.');
+        if (daysDiff < 30) { // Exactly one month minimum required
+            alert('Student Dorm requires a minimum stay of exactly 1 month (30 days).');
             return;
         }
     }
@@ -826,7 +826,7 @@ function calculateTotalPrice(roomType, checkIn, checkOut) {
     if (roomType === 'Event Halls') {
         duration += 1;
     } else if (roomType === 'Student Dorm') {
-        duration = Math.ceil(duration / 30);
+        duration = Math.floor(duration / 30);
     }
 
     const rateInfo = ROOM_RATES[roomType];
