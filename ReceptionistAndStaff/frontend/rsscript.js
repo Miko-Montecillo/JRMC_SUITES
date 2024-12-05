@@ -86,12 +86,11 @@ async function checkOut() {
         }
 
         const checkOutData = await response.json();
-        const hoursStayed = Math.ceil(checkOutData.duration / (1000 * 60 * 60));
 
         alert(
             `Checkout Summary:\n` +
-            `Guest: ${checkOutData.guestName}\n` +
-            `Room: ${roomNumber}`
+            `Guest Name: ${checkOutData.guestName}\n` +
+            `Room Number: ${checkOutData.roomNumber}`
         );
 
         roomData[roomNumber] = {
@@ -188,65 +187,108 @@ async function updateRoomStatusDisplay() {
 // Function to generate invoice
 async function generateInvoice() {
     const roomNumber = document.getElementById('invoice-room').value;
+    if (!roomNumber) {
+        alert('Please select a room number');
+        return;
+    }
 
     try {
-        // Fetch active booking for the room
-        const response = await fetch(`${API_BASE_URL}/bookings/active?roomNumber=${roomNumber}`);
+        // Fetch booking data for the room
+        const response = await fetch(`${API_BASE_URL}/rooms/${roomNumber}/booking`);
         if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message || 'Failed to fetch booking data');
+            if (response.status === 404) {
+                alert('No booking found for this room');
+                return;
+            }
+            throw new Error('Failed to fetch booking data');
         }
         
-        const booking = await response.json();
+        const invoiceData = await response.json();
+        const { booking, room, generatedAt } = invoiceData;
 
-        // Generate invoice using the booking data
-        const invoiceResponse = await fetch(`${API_BASE_URL}/invoices/generate`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ bookingId: booking._id })
-        });
+        // Calculate duration and amount
+        const checkInTime = new Date(booking.checkIn);
+        const checkOutTime = booking.checkOut ? new Date(booking.checkOut) : new Date();
+        
+        const roomType = roomNumber.charAt(0);
+        const roomRates = {
+            'A': { rate: 3000, per: 'month' },  // Student Dorm
+            'B': { rate: 690, per: 'night' },   // Single Bedroom
+            'C': { rate: 1350, per: 'night' },  // Double Bedroom
+            'D': { rate: 2000, per: 'night' },  // Family Room
+            'E': { rate: 5000, per: 'day' }     // Event Hall
+        };
 
-        if (!invoiceResponse.ok) {
-            const error = await invoiceResponse.json();
-            throw new Error(error.message || 'Failed to generate invoice');
+        const { rate, per } = roomRates[roomType] || roomRates['B'];
+        let duration, totalAmount, durationText;
+
+        if (per === 'month') {
+            // For Student Dorm - calculate months
+            const months = (checkOutTime.getFullYear() - checkInTime.getFullYear()) * 12 + 
+                          (checkOutTime.getMonth() - checkInTime.getMonth());
+            const remainingDays = checkOutTime.getDate() - checkInTime.getDate();
+            duration = months + (remainingDays > 0 ? 1 : 0); // Round up for partial months
+            durationText = `${duration} month${duration !== 1 ? 's' : ''}`;
+        } else if (per === 'day') {
+            // For Event Halls - include both check-in and check-out days
+            const durationInMs = checkOutTime - checkInTime;
+            duration = Math.ceil(durationInMs / (1000 * 60 * 60 * 24)) + 1;
+            durationText = `${duration} day${duration !== 1 ? 's' : ''}`;
+        } else {
+            // For hotel rooms (nightly rates)
+            const durationInMs = checkOutTime - checkInTime;
+            duration = Math.ceil(durationInMs / (1000 * 60 * 60 * 24));
+            durationText = `${duration} night${duration !== 1 ? 's' : ''}`;
         }
 
-        const { invoice } = await invoiceResponse.json();
+        totalAmount = rate * duration;
 
-        // Format the invoice for display
-        const invoiceText = 
-            `Invoice for Room ${invoice.roomNumber}\n` +
-            `----------------------------\n` +
-            `Guest: ${invoice.guestName}\n` +
-            `Room Type: ${invoice.roomType}\n` +
-            `Check-in: ${new Date(invoice.checkIn).toLocaleString()}\n` +
-            `Check-out: ${new Date(invoice.checkOut).toLocaleString()}\n` +
-            `Duration: ${invoice.duration} ${invoice.billingUnit}${invoice.duration > 1 ? 's' : ''}\n` +
-            `Base Rate: ₱${invoice.baseRate.toLocaleString('en-PH')}/${invoice.billingUnit}\n` +
-            `Base Amount: ₱${(invoice.baseRate * invoice.duration).toLocaleString('en-PH')}\n`;
-
-        // Add additional charges if any
-        if (invoice.additionalCharges && invoice.additionalCharges.length > 0) {
-            invoiceText += `\nAdditional Charges:\n`;
-            invoice.additionalCharges.forEach(charge => {
-                invoiceText += `${charge.description}: ₱${charge.amount.toLocaleString('en-PH')}\n`;
+        // Format dates (MM/DD/YYYY)
+        const formatDate = (date) => {
+            return date.toLocaleDateString('en-US', {
+                month: 'numeric',
+                day: 'numeric',
+                year: 'numeric'
             });
-            invoiceText += `Total Additional Charges: ₱${invoice.totalAdditionalCharges.toLocaleString('en-PH')}\n`;
+        };
+
+        // Generate invoice with the specified format
+        const invoice = 
+            `HOTEL INVOICE\n` +
+            `=============\n\n` +
+            `Booking ID: ${booking.bookingId}\n` +
+            `Room: ${roomNumber} (${roomType})\n` +
+            `Guest: ${booking.guestName}\n\n` +
+            `Check-in:  ${formatDate(checkInTime)}\n` +
+            `Check-out: ${formatDate(checkOutTime)}\n\n` +
+            `Duration: ${durationText}\n` +
+            `Rate: ₱${rate.toLocaleString('en-PH')}/${per}\n` +
+            `Total Amount: ₱${totalAmount.toLocaleString('en-PH')}`;
+
+        // Display the invoice
+        const invoiceDisplay = document.getElementById('invoice-display');
+        if (invoiceDisplay) {
+            invoiceDisplay.textContent = invoice;
+            invoiceDisplay.style.whiteSpace = 'pre-wrap';
+        } else {
+            alert(invoice);
         }
-
-        invoiceText += 
-            `----------------------------\n` +
-            `Total Amount: ₱${invoice.totalAmount.toLocaleString('en-PH')}\n` +
-            `----------------------------\n` +
-            `Generated: ${new Date(invoice.generatedAt).toLocaleString()}`;
-
-        alert(invoiceText);
     } catch (error) {
         console.error('Error generating invoice:', error);
-        alert(error.message || 'Failed to generate invoice. Please try again.');
+        alert('Failed to generate invoice. Please try again.');
     }
+}
+
+// Helper function to get room-specific notes
+function getRoomNote(roomType) {
+    const notes = {
+        'A': 'For Student Dorm, any partial month is counted as a full month.',
+        'B': 'Check-out time is 12:00 PM (noon). Late check-out may incur additional charges.',
+        'C': 'Check-out time is 12:00 PM (noon). Late check-out may incur additional charges.',
+        'D': 'Check-out time is 12:00 PM (noon). Late check-out may incur additional charges.',
+        'E': 'Both check-in and check-out days are included in the duration for Event Halls.'
+    };
+    return notes[roomType] || 'Check-out time is 12:00 PM (noon). Late check-out may incur additional charges.';
 }
 
 // Function to handle tab switching
@@ -697,6 +739,10 @@ function initializeWidgets() {
         header.addEventListener('click', () => {
             const widget = header.closest('.widget');
             widget.classList.toggle('collapsed');
+            
+            // Save the state to localStorage
+            const categoryId = widget.querySelector('.request-category').id;
+            localStorage.setItem(`category-${categoryId}-collapsed`, widget.classList.contains('collapsed'));
         });
     });
 }
