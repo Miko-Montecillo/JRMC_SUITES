@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JRMC Suites - Home</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- header section starts  -->
+    <section class="header">
+      <div class="flex">
+        <a href="#home" class="logo">JRMC Suites</a>
+        <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+    </section>
+
+    <!-- header section ends -->
+    
+    <!-- home section starts  -->
+    <section class="home" id="home">
+      <div class="swiper home-slider">
+        <div class="swiper-wrapper">
+          <div class="box swiper-slide">
+            <img src="images/home-img-1.jpg" alt="" />
+            <div class="flex">
+              <h3>luxurious rooms</h3>
+              <a href="checkAvailability.html" class="btn">check availability</a>
+            </div>
+          </div>
+
+          <div class="box swiper-slide">
+            <img src="images/home-img-3.jpg" alt="" />
+            <div class="flex">
+              <h3>luxurious halls</h3>
+              <a href="checkAvailability.html" class="btn">check availability</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- home section ends -->
+    <!-- about section starts  -->
+    <section class="about" id="about">
+      <div class="row">
+        <div class="image">
+          <img src="images/about-img-1.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>Student Centric Service</h3>
+          <p>
+            JMRC Suites is an accommodation-focused business designed to provide a student-centered living experience. It offers various function rooms and services tailored to support daily personal and student activities, aiming to deliver high-quality student living.
+          </p>
+          <a href="#contact" class="btn">Contact us</a>
+        </div>
+      </div>
+
+      <div class="row revers">
+        <div class="image">
+          <img src="images/about-img-2.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>best guest rooms</h3>
+          <p>
+            JMRC Suites offers comfortable guest rooms designed with a student-centric approach, focusing on high-quality accommodation that aligns with students’ needs. Each room incorporates thoughtful design elements to create a relaxing, functional space that enhances the overall living experience for students.
+          </p>
+          <a href="#contact" class="btn">contact us</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="image">
+          <img src="images/about-img-3.jpg" alt="" />
+        </div>
+        <div class="content">
+          <h3>best event halls</h3>
+          <p>
+            JMRC Suites provides a range of versatile event halls, each tailored to support personal and student-centered activities. These function rooms are designed to accommodate various events, ensuring students have access to spaces that facilitate both social and academic gatherings. Through these offerings, JMRC Suites aims to support a well-rounded student lifestyle.
+          </p>
+          <a href="#contact" class="btn">contact us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- about section ends -->
+    <!-- gallery section starts  -->
+    <section class="gallery" id="gallery">
+      <div class="swiper gallery-slider">
+        <div class="swiper-wrapper">
+          <img src="images/gallery-img-1.jpg" class="swiper-slide" alt="" />
+          <img src="images/gallery-img-2.webp" class="swiper-slide" alt="" />
+          <img src="images/gallery-img-3.webp" class="swiper-slide" alt="" />
+          <img src="images/gallery-img-4.webp" class="swiper-slide" alt="" />
+          <img src="images/gallery-img-5.webp" class="swiper-slide" alt="" />
+          <img src="images/gallery-img-6.webp" class="swiper-slide" alt="" />
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- gallery section ends -->
+    <!-- contact section starts  -->
+    <section class="contact" id="contact">
+      <div class="row">
+        <form action="" method="post">
+          <h3>send us message</h3>
+          <input
+            type="text"
+            name="name"
+            required
+            maxlength="50"
+            placeholder="enter your name"
+            class="box"
+          />
+          <input
+            type="email"
+            name="email"
+            required
+            maxlength="50"
+            placeholder="enter your email"
+            class="box"
+          />
+          <input
+            type="number"
+            name="number"
+            required
+            maxlength="10"
+            min="0"
+            max="9999999999"
+            placeholder="enter your number"
+            class="box"
+          />
+          <textarea
+            name="msg"
+            class="box"
+            required
+            maxlength="1000"
+            placeholder="enter your message"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input type="submit" value="send message" name="send" class="btn" />
+        </form>
+
+        <div class="faq">
+          <h3 class="title">frequently asked questions</h3>
+          <div class="box active">
+            <h3>how to cancel?</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+              sunt aspernatur excepturi eos! Quibusdam, sapiente.
+            </p>
+          </div>
+          <div class="box">
+            <h3>is there any vacancy?</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
+              ipsam neque quaerat mollitia ratione? Soluta!
+            </p>
+          </div>
+          <div class="box">
+            <h3>what are payment methods?</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
+              ipsam neque quaerat mollitia ratione? Soluta!
+            </p>
+          </div>
+          <div class="box">
+            <h3>how to claim coupons codes?</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
+              ipsam neque quaerat mollitia ratione? Soluta!
+            </p>
+          </div>
+          <div class="box">
+            <h3>what are the age requirements?</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
+              ipsam neque quaerat mollitia ratione? Soluta!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact section ends -->
+    <!-- reviews section starts  -->
+    <section class="reviews" id="reviews">
+      <div class="swiper reviews-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide box">
+            <img src="images/pic-1.png" alt="" />
+            <h3>Benjamin White</h3>
+            <p>
+              "I was really impressed with the elegant decorations throughout the hotel. The staff went above and beyond to make me feel at home. Highly recommend it for anyone looking for a stylish and comfortable stay!"
+            </p>
+          </div>
+          <div class="swiper-slide box">
+            <img src="images/pic-2.png" alt="" />
+            <h3>Sophia Richards</h3>
+            <p>
+             "The suite is so close to my university, which makes it super convenient for study breaks. The rooms are cozy, and the decor is modern yet welcoming!"
+            </p>
+          </div>
+          <div class="swiper-slide box">
+            <img src="images/pic-3.png" alt="" />
+            <h3>Alexander Lee</h3>
+            <p>
+              "The location couldn't be better—just a short walk from my campus. The rooms are simple but super clean, and the price is perfect for a student budget."
+            </p>
+          </div>
+          <div class="swiper-slide box">
+            <img src="images/pic-4.png" alt="" />
+            <h3>Emily Harris</h3>
+            <p>
+              "This hotel has the best event hall I've ever seen. We hosted a family reunion here, and the space was perfect—beautifully designed and spacious enough for all our guests."
+            </p>
+          </div>
+          <div class="swiper-slide box">
+            <img src="images/pic-5.png" alt="" />
+            <h3>Noah Miller</h3>
+            <p>
+              "The affordable rates made it easy to stay here for a weekend trip. The decor was trendy and vibrant, and the rooms felt like a home away from home."
+            </p>
+          </div>
+          <div class="swiper-slide box">
+            <img src="images/pic-6.png" alt="" />
+            <h3>Ava Walker </h3>
+            <p>
+              "The attention to detail in the decorations really made the hotel feel special. The service was top-notch, and the atmosphere was so relaxing. I’ll definitely be back!"
+            </p>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- reviews section ends  -->
+    <!-- footer section starts  -->
+    <section class="footer">
+      <div class="box-container">
+        <div class="box">
+          <a href="tel:1234567890"
+            ><i class="fas fa-phone"></i> +123-456-7890</a
+          >
+          <a href="tel:1112223333"
+            ><i class="fas fa-phone"></i> +111-222-3333</a
+          >
+          <a href="mailto:jrmc@gmail.com"
+            ><i class="fas fa-envelope"></i> jrmcsuites@gmail.com</a
+          >
+          <a href="#"
+            ><i class="fas fa-map-marker-alt"></i> Philippines - Mindanao</a
+          >
+        </div>
+
+        <div class="box">
+          <a href="#">facebook <i class="fab fa-facebook-f"></i></a>
+          <a href="#">twitter <i class="fab fa-twitter"></i></a>
+          <a href="#">instagram <i class="fab fa-instagram"></i></a>
+          <a href="#">linkedin <i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="credit">
+        &copy; Produced by JRMC!
+      </div>
+    </section>
+
+    <!-- footer section ends -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/swiper-init.js"></script>
+    <script src="js/gsscript.js"></script>
+  </body>
+</html>

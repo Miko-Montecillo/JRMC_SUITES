@@ -1,0 +1,23 @@
+/* Reservation page styles */
+#roomDetails {
+    border: var(--border);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: .5rem;
+    background-color: var(--main-color);
+}
+
+#roomDetails p {
+    font-size: 1.8rem;
+    color: var(--sub-color);
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.price {
+    font-size: 2.2rem;
+    color: var(--sub-color);
+    text-align: right;
+    margin-top: 1.5rem;
+    font-weight: bold;
+}
